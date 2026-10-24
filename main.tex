@@ -25,9 +25,25 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
-  \setmainfont[]{TeX Gyre Termes}
-  \setsansfont[]{TeX Gyre Heros}
-  \setmonofont[]{Latin Modern Mono}
+  % Load TeX Live font files directly, independent of macOS font registration.
+  \setmainfont{texgyretermes}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic]
+  \setsansfont{texgyreheros}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic]
+  \setmonofont{lmmono10}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    ItalicFont=*-italic,
+    BoldFont=lmmonolt10-bold,
+    BoldItalicFont=lmmonolt10-boldoblique]
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}

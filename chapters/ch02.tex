@@ -47,7 +47,7 @@
 
 \section{下一个词元预测 NTP 从损失到信息压缩}\label{下一个词元预测 NTP 从损失到信息压缩}
 
-本节内容对初学者来说可能比较抽象，观看这段 \href{https://www.bilibili.com/video/BV1yVNU6xERx}{{信息压缩}}\footnote{https://www.bilibili.com/video/BV1yVNU6xERx} 视频解说可平替本节学习。最主要的是理解这样一个观点：大模型训练可以视为信息压缩。
+本节内容对初学者来说可能比较抽象，观看 1Blue3Brown 的 \href{https://www.bilibili.com/video/BV1yVNU6xERx}{{信息压缩}}\footnote{https://www.bilibili.com/video/BV1yVNU6xERx} 视频解说可以替代本节学习。最主要的是理解这样一个观点：大模型训练可以视为信息压缩。
 
 现在我们把小助暂时简化成一个函数：输入此前的 token，输出词表上所有候选 token 的概率。对``法国的首都是''这个前缀，它可能给``巴黎''相关的首个 token 较高概率，也给其他延续保留概率。生成时，我们从这些概率中选一个 token，接回前缀，再重复同样的过程。
 

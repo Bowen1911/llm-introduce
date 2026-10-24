@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" role="img" aria-labelledby="title desc">
+<title id="title">一个 Transformer 层  两次残差更新</title>
+<desc id="desc">以 pre-norm 解码器层为例。第一条支路经过归一化、注意力与输出投影后加回原状态。第二条支路经过归一化和前馈网络，再次加回。</desc>
+<rect width="1000" height="470" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">一个 Transformer 层  两次残差更新</text>
+<text x="20" y="90" class="small" text-anchor="start">以 pre-norm 为例；省略 dropout。两条支路的输出维度必须与残差一致。</text>
+<rect x="20" y="150" width="130" height="70" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="85.0" y="193.0" class="" text-anchor="middle">h</text>
+<rect x="210" y="150" width="170" height="70" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="295.0" y="193.0" class="" text-anchor="middle">归一化</text>
+<rect x="440" y="150" width="260" height="70" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="570.0" y="178.0" class="" text-anchor="middle">多头注意力</text>
+<text x="570.0" y="209.0" class="" text-anchor="middle">与输出投影</text>
+<rect x="770" y="150" width="70" height="70" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="805.0" y="193.0" class="" text-anchor="middle">＋</text>
+<rect x="900" y="150" width="80" height="70" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="940.0" y="193.0" class="" text-anchor="middle">h′</text>
+<polyline points="150,185 203,185" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="380,185 433,185" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="700,185 763,185" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="840,185 893,185" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="85,150 85,115 805,115 805,143" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="20" y="320" width="130" height="70" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="85.0" y="363.0" class="" text-anchor="middle">h′</text>
+<rect x="210" y="320" width="170" height="70" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="295.0" y="363.0" class="" text-anchor="middle">归一化</text>
+<rect x="440" y="320" width="260" height="70" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="570.0" y="348.0" class="" text-anchor="middle">前馈网络</text>
+<text x="570.0" y="379.0" class="" text-anchor="middle">逐位置非线性</text>
+<rect x="770" y="320" width="70" height="70" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="805.0" y="363.0" class="" text-anchor="middle">＋</text>
+<rect x="900" y="320" width="80" height="70" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="940.0" y="363.0" class="" text-anchor="middle">h″</text>
+<polyline points="150,355 203,355" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="380,355 433,355" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="700,355 763,355" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="840,355 893,355" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="85,320 85,285 805,285 805,313" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="20" y="446" class="small" text-anchor="start">每个位置都有状态；注意力跨位置汇集信息，前馈网络分别变换各位置。</text>
+</svg>

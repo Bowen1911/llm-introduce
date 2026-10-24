@@ -1,0 +1,52 @@
+# LaTeX build directory and generated output
+/build/
+/main.pdf
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.xdv
+*.dvi
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+*.blg
+*.bbl
+*.idx
+*.ilg
+*.ind
+*.loa
+*.lol
+*.spl
+*.synctex(busy)
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor, OS, and temporary files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+
+# Local secrets
+.env
+.env.*
+!.env.example

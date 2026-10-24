@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="515" viewBox="0 0 1000 515" role="img" aria-labelledby="title desc">
+<title id="title">激活修补  把观察推进为一次受控干预</title>
+<desc id="desc">原始提示和对照提示分别运行同一固定模型。缓存原始运行选中层与位置的激活，仅将这一激活替换进对照运行，观察logit差变化，并与无修补及无关位置修补作比较。</desc>
+<rect width="1000" height="515" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">激活修补  把观察推进为一次受控干预</text>
+<rect x="20" y="110" width="200" height="80" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="120.0" y="158.0" class="" text-anchor="middle">原始提示</text>
+<rect x="320" y="110" width="300" height="80" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="470.0" y="143.0" class="" text-anchor="middle">同一固定模型</text>
+<text x="470.0" y="174.0" class="" text-anchor="middle">选定层与位置</text>
+<rect x="750" y="110" width="230" height="80" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="865.0" y="158.0" class="" text-anchor="middle">末尾 logit 差 Δz</text>
+<polyline points="220,150 313,150" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="620,150 743,150" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="20" y="285" width="200" height="80" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="120.0" y="333.0" class="" text-anchor="middle">对照提示</text>
+<rect x="320" y="285" width="300" height="80" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="470.0" y="318.0" class="" text-anchor="middle">同一固定模型</text>
+<text x="470.0" y="349.0" class="" text-anchor="middle">选定层与位置</text>
+<rect x="750" y="285" width="230" height="80" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="865.0" y="333.0" class="" text-anchor="middle">末尾 logit 差 Δz</text>
+<polyline points="220,325 313,325" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="620,325 743,325" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="470,190 470,278" fill="none" stroke="#536978" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="493" y="245" class="small" text-anchor="start">只替换这一处激活</text>
+<text x="20" y="424" class="small" text-anchor="start">比较  对照原运行  候选位置修补  无关位置修补；跨名字与句型复验。</text>
+<text x="20" y="470" class="small" text-anchor="start">恢复支持局部因果作用；不等于找到唯一原因，也没有改变模型权重。</text>
+</svg>

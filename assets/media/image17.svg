@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="435" viewBox="0 0 1000 435" role="img" aria-labelledby="title desc">
+<title id="title">DPO  同题两份回答  比较相对参考的变化</title>
+<desc id="desc">同一个问题的偏好与非偏好回答分别在当前策略和冻结参考策略下计算对数概率。先求每份回答相对参考的变化，再作差，经偏好损失只更新当前策略。</desc>
+<rect width="1000" height="435" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">DPO  同题两份回答  比较相对参考的变化</text>
+<rect x="20" y="110" width="230" height="90" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="135.0" y="148.0" class="" text-anchor="middle">同一问题 x</text>
+<text x="135.0" y="179.0" class="" text-anchor="middle">偏好 y⁺  非偏好 y⁻</text>
+<rect x="340" y="95" width="260" height="80" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="470.0" y="128.0" class="" text-anchor="middle">当前策略  可训练</text>
+<text x="470.0" y="159.0" class="" text-anchor="middle">分别计算两份 log 概率</text>
+<rect x="340" y="240" width="260" height="80" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="470.0" y="273.0" class="" text-anchor="middle">参考策略  冻结</text>
+<text x="470.0" y="304.0" class="" text-anchor="middle">分别计算两份 log 概率</text>
+<polyline points="250,140 300,140 300,135 333,135" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="250,170 300,170 300,280 333,280" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="700" y="160" width="280" height="110" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="840.0" y="193.0" class="" text-anchor="middle">各自减去参考值</text>
+<text x="840.0" y="224.0" class="" text-anchor="middle">再作正负差 Δ</text>
+<text x="840.0" y="255.0" class="" text-anchor="middle">偏好损失</text>
+<polyline points="600,135 650,135 650,195 693,195" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="600,280 650,280 650,235 693,235" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="20" y="385" class="small" text-anchor="start">从相同策略初始化时 Δ = 0，预测偏好概率为 0.5；训练只更新当前策略。</text>
+</svg>

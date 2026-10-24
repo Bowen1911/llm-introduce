@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-labelledby="title desc">
+<title id="title">算术编码的区间细分</title>
+<desc id="desc">用 A 的概率四分之三和 B 的概率四分之一编码 ABA。区间依次为零到零点七五、零点五六二五到零点七五、零点五六二五到零点七零三一二五。二进制前缀 1010 对应的区间包含于最终区间。每行放大上一行选中的区间。</desc>
+<rect width="1200" height="880" fill="white"/>
+<style>text{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif;fill:#162832}.title{font-size:34px;font-weight:700}.body{font-size:25px}.small{font-size:23px}.bar{font-size:27px;font-weight:700}</style>
+<text x="44" y="55" class="title" text-anchor="start">算术编码  把 ABA 逐步缩进一个区间</text>
+<text x="44" y="98" class="body" text-anchor="start">共享概率表  A 为 0.75   B 为 0.25    已知消息长度为 3</text>
+<text x="44" y="133" class="small" text-anchor="start">每一行放大上一行选中的区间  跨行的横轴尺度不同</text>
+<text x="44" y="232" class="body" text-anchor="start">读取 A</text>
+<rect x="270" y="200" width="652.5" height="54" fill="#B7D3E1" stroke="#7B8E9A" stroke-width="1"/>
+<rect x="922.5" y="200" width="217.5" height="54" fill="#F2F5F7" stroke="#7B8E9A" stroke-width="1"/>
+<text x="596.25" y="235" class="bar" text-anchor="middle">A</text>
+<text x="1031.25" y="235" class="bar" text-anchor="middle">B</text>
+<line x1="270" x2="270" y1="254" y2="261" stroke="#607789"/>
+<text x="270" y="290" class="small" text-anchor="middle">0</text>
+<line x1="922.5" x2="922.5" y1="254" y2="261" stroke="#607789"/>
+<text x="922.5" y="290" class="small" text-anchor="middle">0.75</text>
+<line x1="1140" x2="1140" y1="254" y2="261" stroke="#607789"/>
+<text x="1140" y="290" class="small" text-anchor="middle">1</text>
+<path d="M 596.25 301 V 311" fill="none" stroke="#55778A" stroke-width="2"/>
+<path d="M 589.25 303 l 7 9 l 7 -9" fill="none" stroke="#55778A" stroke-width="2"/>
+<text x="44" y="372" class="body" text-anchor="start">读取 B</text>
+<rect x="270" y="340" width="652.5" height="54" fill="#F2F5F7" stroke="#7B8E9A" stroke-width="1"/>
+<rect x="922.5" y="340" width="217.5" height="54" fill="#B7D3E1" stroke="#7B8E9A" stroke-width="1"/>
+<text x="596.25" y="375" class="bar" text-anchor="middle">AA</text>
+<text x="1031.25" y="375" class="bar" text-anchor="middle">AB</text>
+<line x1="270" x2="270" y1="394" y2="401" stroke="#607789"/>
+<text x="270" y="430" class="small" text-anchor="middle">0</text>
+<line x1="922.5" x2="922.5" y1="394" y2="401" stroke="#607789"/>
+<text x="922.5" y="430" class="small" text-anchor="middle">0.5625</text>
+<line x1="1140" x2="1140" y1="394" y2="401" stroke="#607789"/>
+<text x="1140" y="430" class="small" text-anchor="middle">0.75</text>
+<path d="M 1031.25 441 V 451" fill="none" stroke="#55778A" stroke-width="2"/>
+<path d="M 1024.25 443 l 7 9 l 7 -9" fill="none" stroke="#55778A" stroke-width="2"/>
+<text x="44" y="512" class="body" text-anchor="start">读取 A</text>
+<rect x="270" y="480" width="652.5" height="54" fill="#B7D3E1" stroke="#7B8E9A" stroke-width="1"/>
+<rect x="922.5" y="480" width="217.5" height="54" fill="#F2F5F7" stroke="#7B8E9A" stroke-width="1"/>
+<text x="596.25" y="515" class="bar" text-anchor="middle">ABA</text>
+<text x="1031.25" y="515" class="bar" text-anchor="middle">ABB</text>
+<line x1="270" x2="270" y1="534" y2="541" stroke="#607789"/>
+<text x="270" y="570" class="small" text-anchor="middle">0.5625</text>
+<line x1="922.5" x2="922.5" y1="534" y2="541" stroke="#607789"/>
+<text x="922.5" y="570" class="small" text-anchor="middle">0.703125</text>
+<line x1="1140" x2="1140" y1="534" y2="541" stroke="#607789"/>
+<text x="1140" y="570" class="small" text-anchor="middle">0.75</text>
+<text x="44" y="653" class="body" text-anchor="start">发送 1010</text>
+<rect x="270" y="625" width="870" height="54" fill="#E9F2F7" stroke="#7B8E9A" stroke-width="1"/>
+<rect x="656.6666666666666" y="625" width="386.66666666666663" height="54" fill="#EDCC88" stroke="#8A682B" stroke-width="2"/>
+<text x="850.0" y="660" class="bar" text-anchor="middle">1010</text>
+<text x="270" y="715" class="small" text-anchor="middle">0.5625</text>
+<text x="1140" y="715" class="small" text-anchor="middle">0.703125</text>
+<text x="44" y="752" class="body" text-anchor="start">1010 的二进制前缀区间为 [0.625, 0.6875)，完整落在 ABA 区间内。</text>
+<text x="44" y="794" class="body" text-anchor="start">解码器使用相同概率与长度约定，即可沿相同划分恢复 A → B → A。</text>
+<text x="44" y="841" class="small" text-anchor="start">这是固定概率的教学示例；语言模型的下一 token 概率通常随前缀变化。</text>
+</svg>

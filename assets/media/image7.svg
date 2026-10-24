@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="590" viewBox="0 0 1000 590" role="img" aria-labelledby="title desc">
+<title id="title">Q K V  从位置表示到上下文信息</title>
+<desc id="desc">同一输入矩阵分别投影得到 Q、K、V。Q 与 K 计算匹配分数，掩码和逐行 softmax 产生权重 A，最后以 A 加权 V 得到输出 Z。</desc>
+<rect width="1000" height="590" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">Q K V  从位置表示到上下文信息</text>
+<rect x="320" y="75" width="360" height="75" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="500.0" y="105.5" class="" text-anchor="middle">输入 X  每行是一个位置</text>
+<text x="500.0" y="136.5" class="" text-anchor="middle">形状 n × 输入隐藏维度</text>
+<rect x="20" y="230" width="300" height="82" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="170.0" y="264.0" class="" text-anchor="middle">Q  查询</text>
+<text x="170.0" y="295.0" class="" text-anchor="middle">n × key 维度</text>
+<polyline points="500,150 500,185 170,185 170,223" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="350" y="230" width="300" height="82" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="500.0" y="264.0" class="" text-anchor="middle">K  键</text>
+<text x="500.0" y="295.0" class="" text-anchor="middle">n × key 维度</text>
+<polyline points="500,150 500,185 500,185 500,223" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="680" y="230" width="300" height="82" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="830.0" y="264.0" class="" text-anchor="middle">V  值</text>
+<text x="830.0" y="295.0" class="" text-anchor="middle">n × value 维度</text>
+<polyline points="500,150 500,185 830,185 830,223" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="95" y="216" class="" text-anchor="start">乘 Wq</text>
+<text x="405" y="216" class="" text-anchor="start">乘 Wk</text>
+<text x="735" y="216" class="" text-anchor="start">乘 Wv</text>
+<rect x="20" y="400" width="280" height="96" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="160.0" y="426.0" class="" text-anchor="middle">Q × K 的转置</text>
+<text x="160.0" y="457.0" class="" text-anchor="middle">除以 √(key 维度)</text>
+<text x="160.0" y="488.0" class="" text-anchor="middle">分数形状 n × n</text>
+<rect x="360" y="400" width="280" height="96" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="500.0" y="441.0" class="" text-anchor="middle">加因果掩码</text>
+<text x="500.0" y="472.0" class="" text-anchor="middle">逐行 softmax  得 A</text>
+<rect x="700" y="400" width="280" height="96" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="840.0" y="441.0" class="" text-anchor="middle">Z = AV</text>
+<text x="840.0" y="472.0" class="" text-anchor="middle">输出 n × value 维度</text>
+<polyline points="170,312 170,393" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="500,312 500,350 235,350 235,393" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="300,448 353,448" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="640,448 693,448" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="830,312 830,393" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="20" y="554" class="small" text-anchor="start">Q 和 K 决定权重；真正被加权相加的是 V。这里画的是单个注意力头。</text>
+</svg>

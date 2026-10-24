@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="425" viewBox="0 0 1000 425" role="img" aria-labelledby="title desc">
+<title id="title">SFT  看见哪些 token  与监督哪些 token</title>
+<desc id="desc">例子使用单独的玩具token。模型并行处理输入前缀，但通过因果掩码屏蔽未来。用户位置损失掩码为0，助手答案和结束标记为1。损失位置仍通过此前状态向参数传播梯度。</desc>
+<rect width="1000" height="425" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">SFT  看见哪些 token  与监督哪些 token</text>
+<text x="20" y="85" class="small" text-anchor="start">玩具分词示例  每列对齐的是“要预测的目标 token”</text>
+<rect x="185" y="125" width="150" height="57" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="260.0" y="161.5" class="small" text-anchor="middle">用户标记</text>
+<rect x="185" y="192" width="150" height="53" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="260.0" y="226.5" class="" text-anchor="middle">0</text>
+<rect x="340" y="125" width="150" height="57" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="415.0" y="161.5" class="small" text-anchor="middle">2+2?</text>
+<rect x="340" y="192" width="150" height="53" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="415.0" y="226.5" class="" text-anchor="middle">0</text>
+<rect x="495" y="125" width="150" height="57" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="570.0" y="161.5" class="small" text-anchor="middle">助手标记</text>
+<rect x="495" y="192" width="150" height="53" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="570.0" y="226.5" class="" text-anchor="middle">0</text>
+<rect x="650" y="125" width="150" height="57" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="725.0" y="161.5" class="small" text-anchor="middle">4</text>
+<rect x="650" y="192" width="150" height="53" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="725.0" y="226.5" class="" text-anchor="middle">1</text>
+<rect x="805" y="125" width="150" height="57" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="880.0" y="161.5" class="small" text-anchor="middle">结束标记</text>
+<rect x="805" y="192" width="150" height="53" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="880.0" y="226.5" class="" text-anchor="middle">1</text>
+<text x="20" y="159" class="small" text-anchor="start">目标 token</text>
+<text x="20" y="225" class="small" text-anchor="start">损失 mask</text>
+<text x="20" y="291" class="small" text-anchor="start">预测 4 的输入前缀只到“助手标记”；4 自身不能提前进入这个预测。</text>
+<text x="20" y="333" class="small" text-anchor="start">mask = 0 表示不直接计该目标的损失，仍可作为后续目标的上下文。</text>
+<text x="20" y="375" class="small" text-anchor="start">损失掩码与因果注意力掩码各司其职；条件位置仍可能收到反向梯度。</text>
+</svg>

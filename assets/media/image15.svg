@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="485" viewBox="0 0 1000 485" role="img" aria-labelledby="title desc">
+<title id="title">反馈训练  采样  评分  更新  再采样</title>
+<desc id="desc">当前策略针对问题采样回答，奖励模型或验证器评分，算法依据相对或绝对反馈更新策略。独立评估不参与本次更新。GRPO需要同题组内奖励存在差异。</desc>
+<rect width="1000" height="485" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">反馈训练  采样  评分  更新  再采样</text>
+<rect x="20" y="110" width="240" height="90" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="140.0" y="148.0" class="" text-anchor="middle">当前策略</text>
+<text x="140.0" y="179.0" class="" text-anchor="middle">针对问题采样</text>
+<rect x="380" y="110" width="240" height="90" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="500.0" y="148.0" class="" text-anchor="middle">同题候选回答</text>
+<text x="500.0" y="179.0" class="" text-anchor="middle">含成功与失败</text>
+<rect x="740" y="110" width="240" height="90" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="860.0" y="148.0" class="" text-anchor="middle">评分器</text>
+<text x="860.0" y="179.0" class="" text-anchor="middle">验证器或奖励模型</text>
+<polyline points="260,155 373,155" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="620,155 733,155" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="380" y="305" width="240" height="90" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="500.0" y="343.0" class="" text-anchor="middle">优化器更新策略</text>
+<text x="500.0" y="374.0" class="" text-anchor="middle">再生成新轨迹</text>
+<rect x="740" y="305" width="240" height="90" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="860.0" y="343.0" class="" text-anchor="middle">构造训练信号</text>
+<text x="860.0" y="374.0" class="" text-anchor="middle">如组内相对优势</text>
+<polyline points="860,200 860,298" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="740,350 627,350" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="380,350 140,350 140,207" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="20" y="440" class="small" text-anchor="start">组内全同分时缺少相对信号；独立验证集只评估，不回填训练奖励。</text>
+</svg>

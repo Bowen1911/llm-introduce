@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="480" viewBox="0 0 1000 480" role="img" aria-labelledby="title desc">
+<title id="title">无损压缩  少发比特  完整还原</title>
+<desc id="desc">编码器与解码器共享符号顺序、概率和长度约定。编码器把原序列编码为比特流，解码器还原完全相同的序列。概率模型与结束约定的开销也须计入总量。</desc>
+<rect width="1000" height="480" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#536978"/></marker></defs>
+<style>text{font-family:"Noto Serif CJK SC",serif;fill:#18232C;font-size:22px} .title{font-size:29px;font-weight:700} .small{font-size:20px} .bold{font-weight:700}</style>
+<text x="20" y="42" class="title" text-anchor="start">无损压缩  少发比特  完整还原</text>
+<rect x="20" y="110" width="200" height="100" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="120.0" y="153.0" class="" text-anchor="middle">原始符号序列</text>
+<text x="120.0" y="184.0" class="" text-anchor="middle">保留全部符号</text>
+<rect x="280" y="110" width="170" height="100" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="365.0" y="153.0" class="" text-anchor="middle">编码器</text>
+<text x="365.0" y="184.0" class="" text-anchor="middle">按概率分配码长</text>
+<rect x="520" y="110" width="180" height="100" rx="5" fill="#F6E4BC" stroke="#536978" stroke-width="1.5"/>
+<text x="610.0" y="153.0" class="" text-anchor="middle">比特流</text>
+<text x="610.0" y="184.0" class="" text-anchor="middle">1010…</text>
+<rect x="770" y="110" width="200" height="100" rx="5" fill="#DDEAF2" stroke="#536978" stroke-width="1.5"/>
+<text x="870.0" y="153.0" class="" text-anchor="middle">解码器</text>
+<text x="870.0" y="184.0" class="" text-anchor="middle">完整还原原序列</text>
+<polyline points="220,160 273,160" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="450,160 513,160" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="700,160 763,160" fill="none" stroke="#536978" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="280" y="280" width="690" height="72" rx="5" fill="#F1F3F5" stroke="#536978" stroke-width="1.5"/>
+<text x="625.0" y="324.0" class="" text-anchor="middle">双方共享  符号顺序  概率模型  消息长度或结束符</text>
+<polyline points="365,280 365,216" fill="none" stroke="#536978" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<polyline points="870,280 870,216" fill="none" stroke="#536978" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+<text x="20" y="400" class="small" text-anchor="start">例  独立信源 A 占 3/4  B 占 1/4  熵约为每符号 0.811 bit</text>
+<text x="20" y="437" class="small" text-anchor="start">长序列的平均编码率可接近它；模型、文件头、终止信息须另计。</text>
+</svg>

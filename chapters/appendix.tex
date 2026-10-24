@@ -1,0 +1,32 @@
+\chapter*{附录 术语与阅读方法}\label{附录 术语与阅读方法}
+\addcontentsline{toc}{chapter}{附录 术语与阅读方法}
+
+\section*{关键术语与边界}\label{关键术语与边界}
+\addcontentsline{toc}{section}{关键术语与边界}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.1866}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.8134}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{术语}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{我们在本书中的用法}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+基座模型 & 主要经过预训练的模型 不表示完全无法遵循提示 \\
+预训练 & 用广泛数据建立表示与生成能力 本书以因果语言建模为主 \\
+SFT & 在给定输入与目标输出上做监督微调 可以学习格式也可以学习任务内容 \\
+RFT & 本书特指拒绝采样微调 其他资料中需先确认全称 \\
+on-policy & 数据与当前策略相关 具体还要检查采样版本与更新滞后 \\
+off-policy & 本书宽泛指使用外部或固定行为数据 不等于方法必然无效 \\
+奖励 & 优化时使用的数值信号 可能只是实际质量的代理 \\
+参考模型 & 提供相对概率或偏离约束的固定策略 不等于 PPO 的旧采样策略 \\
+蒸馏 & 学生学习老师的输出或分布 可以离线也可以在学生轨迹上进行 \\
+幻觉 & 生成中出现无依据或错误内容 需要结合任务证据具体判定 \\
+RAG & 先获取外部资料再条件生成 不保证检索或生成永远正确 \\
+验证集 & 用于开发比较的数据 反复用于选择后不再是独立最终证明 \\
+\end{longtable}

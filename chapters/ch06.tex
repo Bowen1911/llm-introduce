@@ -1,0 +1,147 @@
+\chapter{偏好优化与同策略蒸馏}\label{偏好优化与同策略蒸馏}
+
+\section{直接偏好优化 DPO 为什么可以绕过奖励模型}\label{直接偏好优化 DPO 为什么可以绕过奖励模型}
+
+我们已经收集了``同一题，两份回答，哪份更好''的数据。PPO 路线先把它们变成奖励模型，再在线采样更新策略。我们自然会问：能否直接用偏好对训练小助，少维护一些组件？直接偏好优化（Direct Preference Optimization，DPO）就从这个问题进入。
+
+先回到带 KL 正则的奖励最大化。若奖励给定，参考策略固定，并满足归一化和支持等条件，最优策略可以写成``参考概率乘上指数奖励，再归一化''。这是分布层面的解析关系，不是整个神经网络训练问题已经有了闭式参数解。 用 π 的上标星号表示最优策略、Z 表示归一化因子，解析关系写为：
+\[\pi^{*}(y \mid x) = \frac{\pi_{ref}(y \mid x)\exp\left( r(x,y)/\beta \right)}{Z(x)}\]
+
+这里 β 沿用 KL 权衡系数，exp 表示指数；Z(x) 对问题 x 的所有回答候选求和，使右侧仍为合法概率分布。闭式关系中的``最优''依赖前述假设。
+
+我们把它反过来整理，奖励可以表示成策略与参考策略的对数概率比，再加一个只依赖问题 x 的项。拿同一道题的两个答案相减时，这个项消失。于是，偏好概率能直接写成策略概率的函数，不必另训显式奖励网络。 对上式取对数并整理，把奖励改写成策略概率比，得到：
+\[r(x,y) = \beta log\frac{\pi^{*}(y \mid x)}{\pi_{ref}(y \mid x)} + \beta logZ(x)\]
+
+β log Z(x) 只依赖问题，不依赖回答。因此，同一道题的两个奖励相减时，这一项恰好抵消；不是在所有计算中都可以直接丢掉它。
+
+为了看清损失，我们定义一个差值 Δ：被偏好回答相对参考的对数概率增量，减去不被偏好回答的对应增量。若 Δ 越大，模型就越符合这条偏好。DPO 用负对数 sigmoid 拟合标签。 沿用同一问题 x 与正负回答的记号，差值 Δ 的定义为：
+\[\Delta_{\theta} = log\frac{\pi_{\theta}\left( y^{+} \mid x \right)}{\pi_{ref}\left( y^{+} \mid x \right)} - log\frac{\pi_{\theta}\left( y^{-} \mid x \right)}{\pi_{ref}\left( y^{-} \mid x \right)}\]
+
+每个比值都把当前策略与同一个参考策略比较；Δ 先计算正回答的相对增量，再减去负回答的相对增量。
+
+再把这个差值代入偏好概率，对偏好数据取负对数似然，DPO 损失写为：
+\[L_{DPO} = - E_{\left( x,y^{+},y^{-} \right)}log\sigma\left( \beta\Delta_{\theta} \right)\]
+
+这里的期望对偏好数据中的三元组取平均，σ 与上一章相同，β 调整差值进入偏好模型的尺度。训练仍然通过梯度更新神经网络参数。
+
+这里用的是回答序列的概率，实际通过 token log probability 加总计算，通常不把提示文本（prompt）对应的 token 计入回答概率。长短答案、截断、补齐掩码（padding mask）和模板仍会影响结果。它与 SFT 一样可以 teacher forcing 计算给定回答的概率，但损失还比较正负回答及参考模型，不能直接说成``SFT 换个名字''。
+
+我们把四次概率计算画在图 \ref{fig:DPO比较对象}：两份回答分别经过当前策略与冻结参考策略。先减参考，再比较正负，才能得到前面定义的 Δ。图里没有在线采样箭头，对应本节的固定偏好数据设置。
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{assets/media/image16.png}
+    \caption{DPO 的比较对象。参考策略参与计算但不随本次损失更新；梯度只更新当前策略。离线数据是否覆盖当前行为，需要在下一节另行检查。}
+    \label{fig:DPO比较对象}
+\end{figure}
+
+我们用一个小例子观察参考的作用。假如训练策略从参考初始化，最初每份回答的对数概率比都为零，Δ 也为零，对这对样本预测偏好概率为 0.5。训练再根据标签拉开相对差异。若标签总偏爱长答案，模型也可能学到长度捷径；省掉显式 RM 并不自动省掉偏好数据中的偏差。
+
+DPO 的理论联系建立在偏好建模与理想化优化条件上。有限数据、受限模型族和分布外输入，会使实际行为偏离理想。我们获得的是一种直接优化方式，仍然需要训练和独立评估。``闭式解''解释了重参数化，不意味着运行一次公式就能得到最终权重。
+
+\textbf{停下来试一试} 假设某条偏好数据中，两个回答的``相对参考对数增量''分别为 0.4 和 0.1，计算 Δ。再将偏好标签反过来，解释损失会鼓励怎样的变化。想一想错误偏好为什么会造成有方向的损害。
+
+\textbf{本节相关资料}
+\begin{enumerate}
+    \item Rafailov 等，2023，\href{https://arxiv.org/abs/2305.18290}{Direct Preference Optimization Your Language Model is Secretly a Reward Model} 。阅读重点：从最优策略关系反解奖励，以及为什么归一化项在偏好比较中抵消。
+    \item Azar 等，2023，\href{https://arxiv.org/abs/2310.12036}{A General Theoretical Paradigm to Understand Learning from Human Preferences} 。阅读重点：偏好建模和优化目标的假设怎样影响方法选择。
+\end{enumerate}
+
+\section{离线与在线偏好优化 数据如何跟上策略}\label{离线与在线偏好优化 数据如何跟上策略}
+
+我们用同一份偏好集做了许多轮 DPO。训练集的偏好分类越来越容易，实际对话却出现一类新错误：小助在较长的解释中反复自我肯定。旧偏好对里没有这种回答，我们也从未评价过它。此时，问题从``如何拟合标签''转为``标签覆盖了谁的行为''。
+
+离线偏好优化把已有回答当作固定训练材料。我们不需要在每个优化步骤在线生成，成本容易控制，数据也便于审核。可当策略明显变化，静态样本未必覆盖新模型常生成的轨迹。这里讨论的分布覆盖与 teacher forcing 的前缀错位有关，却不是完全相同的问题；我们不把所有离线局限都统称 exposure bias。
+
+我们可以周期性让当前小助生成新候选，再标偏好、再优化。这是在线或迭代偏好优化的一种思路。它把反馈追到学生的新行为上，但也增加采样、评审与版本管理成本。一次收集、多轮训练与持续重采样之间存在很多中间方案，并非只有``全 on''或``全 off''两个格子。
+
+阅读变体时，我们继续用三个问题定位：信号是什么，数据由谁产生，更新依赖哪些组件。恒等偏好优化（Identity Preference Optimization，IPO）研究另一类偏好目标；卡尼曼与特沃斯基优化（Kahneman--Tversky Optimization，KTO）可以使用好坏标签而不要求每条都是成对偏好；简单偏好优化（Simple Preference Optimization，SimPO）以平均序列对数概率构造无参考奖励；优势比偏好优化（Odds Ratio Preference Optimization，ORPO）把监督学习与偏好约束结合，省去独立参考模型。知道这些差别，就能理解它们各自减少了什么成本，而不急着背公式清单。
+
+我们也提醒自己：无参考并不等于不会漂移；在线并不等于标签可靠；损失更简单也不等于任务一定更强。方法比较应固定起点、偏好来源、生成预算和评价协议。若一个方法用了更强老师重新生成数据，它的收益不能全部算到损失函数头上。
+
+我们会先选实现清楚、数据适配的方法建立基线。当独立评估显示静态数据覆盖不足，再引入迭代收集。这个顺序使每一次复杂度增加都对应已观察到的需求。
+
+\textbf{停下来试一试} 为小助的新错误写一对偏好回答，控制长度和语气，只改变关键缺陷。再说明：这条数据应该来自旧模型、当前模型，还是老师模型？不同来源改变了什么？
+
+\textbf{本节相关资料}
+\begin{enumerate}
+    \item Azar 等，2023，\href{https://arxiv.org/abs/2310.12036}{A General Theoretical Paradigm to Understand Learning from Human Preferences}，包含 IPO 。阅读重点：为何要重新检查偏好目标。
+    \item Ethayarajh 等，2024，\href{https://arxiv.org/abs/2402.01306}{KTO Model Alignment as Prospect Theoretic Optimization} 。阅读重点：不成对的好坏标签怎样提供信号。
+    \item Meng 等，2024，\href{https://arxiv.org/abs/2405.14734}{SimPO Simple Preference Optimization with a Reference-Free Reward} 。阅读重点：参考模型与长度处理的改变。延伸比较 ORPO：\href{https://arxiv.org/abs/2403.07691}{{原文链接}} 。
+\end{enumerate}
+
+\section{同策略蒸馏 OPD 让老师反馈学生轨迹}\label{同策略蒸馏 OPD 让老师反馈学生轨迹}
+
+小助的很多错误发生在中途。单个最终奖励告诉它``没有做对''，却未必指出从哪个分叉开始偏离；照抄老师的完整解答又主要覆盖老师走过的前缀。我们于是尝试另一种教学安排：学生先自己走，老师在学生走到的位置上给反馈。
+
+这就是同策略蒸馏（On-Policy Distillation，OPD），也称在策略蒸馏。它不是 2025 年才突然出现的单一算法；广义知识蒸馏（Generalized Knowledge Distillation，GKD）与 MiniLLM 等工作已经研究过相关思路；MiniLLM 是方法名称，这里不另造缩写。不同实现可以使用不同散度、不同轨迹混合与不同梯度估计。我们先理解共同结构，再选一种反向 KL 形式作例子。
+
+在学生生成的前缀 h 上，老师和学生各给出下一 token 分布。反向 KL 把学生分布放在期望的采样侧：学生常选择、老师却不支持的 token，会产生较大的平均代价。若能取得完整分布，就可以对词表求和。 把老师策略记为 π 的下标 T，在同一个学生前缀 h 上，反向 KL 定义为：
+\[D_{KL}\left( \pi_{\theta}\|\pi_{T} \mid h \right) = \sum_{v}^{}\pi_{\theta}(v \mid h)\log\frac{\pi_{\theta}(v \mid h)}{\pi_{T}(v \mid h)}\]
+
+求和的 v 遍历词表，θ 表示学生参数；两边必须在同一前缀下给概率。该式是词表分布的 KL，不是单个 token 的人类正确性标签。
+
+若只查询学生实际采样 token 的 log probability，可以用对数概率差构造随机估计，并把相反方向的差作为逐 token 反馈。单个采样差值可以为负，KL 的非负性指的是分布期望；``红色 token''也不自动等于人类语义上确定错误的步骤。 把第 t 步学生前缀记为 h 的下标 t、采样动作记为 a 的下标 t，用老师与学生的对数概率差构造反馈：
+\[{\widehat{r}}_{t} = log\pi_{T}\left( a_{t} \mid h_{t} \right) - log\pi_{student}\left( a_{t} \mid h_{t} \right)\]
+
+π 的下标 student 表示用于反馈计算的学生策略，帽号提示这是基于采样的信号。实际实现要说明使用采样时还是更新时的概率，以及哪些量停止梯度。
+
+学生已经走错时，老师面对的是错误前缀。老师可能纠正它，也可能只给出在错误前提下自然的延续。于是，分布反馈很密集，却不等于可靠的步骤真值。逐 token 的局部更新、完整序列 KL 和带未来回报的策略梯度之间，也需要具体说明估计器与梯度处理；不能把任意逐 token 对数差实现都说成严格相同的全序列优化。
+
+我们把两个 KL 方向放回同一幅图景。正向 KL 从老师分布出发，通常更强调覆盖老师的多种模式；反向 KL 从学生分布出发，在受限模型族等条件下常表现出更强的模式选择倾向。这是有条件的行为直觉，并非``正向总平均、反向总最好''的定律。数据在哪些前缀上采集，与散度方向同样重要。
+
+Thinking Machines 在 2025 年的研究博客中展示了推理与个性化的 OPD 实验，并用采样 token 的老师 log probability 构造密集反馈。我们把它视作有用的实验案例，不把其中效率结果写成跨任务的固定倍数。低 KL 说明学生接近老师，不能保证接近事实真相；老师的错误、风格偏差与盲点仍会传递。
+
+回到续训退化，我们可以让学生在真实任务前缀上向保留良好行为的老师学习。但老师若没有新课程知识，就不能指望它凭空教会学生。实际还要考虑 tokenizer 对齐、概率接口是否可用、老师计算成本与数据覆盖。OPD 把反馈带到学生路径上，成功条件仍要通过实验确认。
+
+\textbf{停下来试一试} 让学生先写出一个错误首步，再分别比较老师``续写该前缀''和``批改该前缀''的回答。解释为什么两种条件下的概率信号未必具有同样含义。若老师只提供文本、不给 log probability，还能做序列蒸馏，但它与这里的逐 token 概率反馈不是同一接口。
+
+\textbf{本节相关资料与研究材料}
+\begin{enumerate}
+    \item Agarwal 等，2023，\href{https://arxiv.org/abs/2306.13649}{On-Policy Distillation of Language Models Learning from Self-Generated Mistakes}，GKD 。阅读重点：学生生成的数据与不同散度目标。
+    \item Gu 等，2023，\href{https://arxiv.org/abs/2306.08543}{MiniLLM} 。阅读重点：反向 KL 与自回归蒸馏中的优化问题。
+    \item Kevin Lu 与 Thinking Machines，2025，\href{https://thinkingmachines.ai/blog/on-policy-distillation/}{On-Policy Distillation}，研究博客 。阅读重点：采样 token 反馈的实现与实验条件；它不是普适效率保证。
+\end{enumerate}
+
+\section{后训练方法比较 依据信号与分布作选择}\label{后训练方法比较 依据信号与分布作选择}
+
+我们现在可以把方法放回同一张地图。它们并非从旧到新的单向升级链，适合哪条路线取决于缺陷和可获得的反馈。
+
+我们用三个轴定位：信号从哪里来，轨迹由谁产生并多久更新，优化需要维护什么组件。信号成本也不一定单调下降，老师前向、人工标注与规则验证的价格取决于场景。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1567}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2537}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3209}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2687}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{方法}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{主要训练信号}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{轨迹或数据来源}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{更新方式}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+SFT & 目标回答 token & 人类或老师等外部示范 & 最大似然 \\
+拒绝采样 RFT & 筛过的成功回答 & 当前或旧检查点采样 & 筛选后最大似然 \\
+PPO 类 RL & 结果或过程回报 & 当前或近期策略采样 & 带约束的策略梯度 \\
+GRPO 类 RL & 组内相对回报 & 同题多次策略采样 & 相对优势更新 \\
+离线 DPO & 被偏好与不被偏好回答 & 固定偏好数据 & 直接偏好损失 \\
+OPD & 老师概率或分布 & 学生轨迹或混合轨迹 & 散度或相应梯度估计 \\
+\end{longtable}
+
+我们据此决定下一步。若新行为连一条可靠示范都没有，先建设示范；若成功路径可采到且可验证，比较 RFT 与 RLVR；若有明确偏好对但在线成本受限，建立 DPO 基线；若有合适老师和可用概率接口，再考虑 OPD。若问题只是缺少最新课规，回到资料检索，不必先更新权重。
+
+\textbf{停下来试一试} 为``不会输出指定的结构化格式''\,``答案偶尔正确''\,``奖励一直为零''\,``不知道本周作业截止时间''各选一个优先行动，并写出采用该行动前必须确认的证据。不要让四个问题都得到同一个``继续训练''的答案。
+
+\textbf{本节相关资料}
+\begin{enumerate}
+    \item Shao 等，2024，\href{https://arxiv.org/abs/2402.03300}{DeepSeekMath} 。阅读重点：把多种后训练方法放进共同分析框架。
+    \item Rafailov 等，2023，\href{https://arxiv.org/abs/2305.18290}{DPO} 。阅读重点：目标联系不等于工程路径相同。
+\end{enumerate}

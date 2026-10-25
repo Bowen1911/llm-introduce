@@ -1,0 +1,76 @@
+% Minimal editorial cover: a quiet matrix of discrete learning units.
+% All artwork remains vector-based; coordinates use the A4 page's lower left.
+\begin{titlepage}
+\thispagestyle{empty}
+\definecolor{coverpaper}{HTML}{F7F5EF}
+\definecolor{coverink}{HTML}{202622}
+\definecolor{coveraccent}{HTML}{B54D35}
+\definecolor{covermuted}{HTML}{747A72}
+\definecolor{coverline}{HTML}{A6ACA1}
+\begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]
+\begin{scope}[shift={(current page.south west)}]
+\fill[coverpaper] (0,0) rectangle (\paperwidth,\paperheight);
+
+% A restrained editorial masthead, aligned with the title and author.
+\node[anchor=base west,inner sep=0,text=covermuted,
+  font=\sffamily\fontsize{8}{11}\selectfont]
+  at (2.4,27.15) {LARGE LANGUAGE MODELS POST TRAINING};
+\node[anchor=base east,inner sep=0,text=covermuted,
+  font=\sffamily\fontsize{8}{11}\selectfont]
+  at (18.6,27.15) {AN INTRODUCTION};
+\draw[coverink!25,line width=0.4pt] (2.4,26.65)--(18.6,26.65);
+
+% Two lines give the Chinese title room to breathe at book-cover scale.
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\sffamily\bfseries\fontsize{58}{68}\selectfont]
+  at (2.32,23.35) {大模型};
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\sffamily\bfseries\fontsize{43}{54}\selectfont]
+  at (2.32,20.95) {后训练入门};
+\fill[coveraccent] (2.4,19.35) rectangle (3.15,19.43);
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\fontsize{14}{20}\selectfont]
+  at (2.4,18.25) {训练一个可靠的AI};
+\node[anchor=base west,inner sep=0,text=covermuted,
+  font=\fontsize{9}{14}\selectfont]
+  at (2.4,17.2) {从数据与训练，到推理、工具与可解释性};
+
+% A discrete matrix: orthogonal units suggest tokens and learned structure.
+% Low-contrast outlines keep the artwork subordinate to the typography.
+\begin{scope}
+\foreach \col in {0,...,11}{
+  \foreach \row in {0,...,5}{
+    \pgfmathsetmacro{\xx}{2.4+1.39*\col}
+    \pgfmathsetmacro{\yy}{7.3+1.25*\row}
+    \draw[coverline!45!coverpaper,line width=0.45pt]
+      (\xx,\yy) rectangle ++(0.82,0.82);
+  }
+}
+% Deliberately irregular blocks avoid arrows, silhouettes and a focal pinch.
+\foreach \col/\row in {0/4,1/1,2/3,3/5,3/0,4/2,5/4,6/1,7/3,8/5,9/2,10/4,11/0}{
+  \pgfmathsetmacro{\xx}{2.4+1.39*\col}
+  \pgfmathsetmacro{\yy}{7.3+1.25*\row}
+  \fill[coverline!25!coverpaper] (\xx,\yy) rectangle ++(0.82,0.82);
+}
+\foreach \col/\row in {1/4,4/3,7/1,10/5}{
+  \pgfmathsetmacro{\xx}{2.4+1.39*\col}
+  \pgfmathsetmacro{\yy}{7.3+1.25*\row}
+  \fill[coverline!65!coverpaper] (\xx,\yy) rectangle ++(0.82,0.82);
+}
+\fill[coveraccent] (14.91,11.05) rectangle ++(0.82,0.82);
+\end{scope}
+
+% Quiet colophon: the author, affiliation and edition date are the only footer.
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\sffamily\fontsize{12}{18}\selectfont]
+  at (2.4,3.65) {李孙博闻};
+\node[anchor=base west,inner sep=0,text=covermuted,
+  font=\fontsize{9}{14}\selectfont]
+  at (2.4,2.85) {北京理工大学};
+\node[anchor=base east,inner sep=0,text=covermuted,
+  font=\sffamily\fontsize{9}{13}\selectfont]
+  at (18.6,2.85) {2026.10};
+\end{scope}
+\end{tikzpicture}
+\mbox{}
+\end{titlepage}

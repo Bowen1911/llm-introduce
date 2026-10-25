@@ -1,0 +1,383 @@
+% Minimal editorial cover: branching worldlines and selected trajectories.
+% All artwork remains vector-based; coordinates use the A4 page's lower left.
+\begin{titlepage}
+\thispagestyle{empty}
+\definecolor{coverpaper}{HTML}{F7F5EF}
+\definecolor{coverink}{HTML}{202622}
+\definecolor{coveraccent}{HTML}{B54D35}
+\definecolor{covermuted}{HTML}{747A72}
+\definecolor{coverline}{HTML}{A6ACA1}
+\begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]
+\begin{scope}[shift={(current page.south west)}]
+\fill[coverpaper] (0,0) rectangle (\paperwidth,\paperheight);
+
+% A restrained editorial masthead, aligned with the title and author.
+\node[anchor=base west,inner sep=0,text=covermuted,
+  font=\sffamily\fontsize{8}{11}\selectfont]
+  at (2.4,27.15) {LARGE LANGUAGE MODELS POST TRAINING};
+\node[anchor=base east,inner sep=0,text=covermuted,
+  font=\sffamily\fontsize{8}{11}\selectfont]
+  at (18.6,27.15) {AN INTRODUCTION};
+\draw[coverink!25,line width=0.4pt] (2.4,26.65)--(18.6,26.65);
+
+% Two lines give the Chinese title room to breathe at book-cover scale.
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\sffamily\bfseries\fontsize{58}{68}\selectfont]
+  at (2.32,23.35) {大模型};
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\sffamily\bfseries\fontsize{43}{54}\selectfont]
+  at (2.32,20.95) {后训练入门};
+\fill[coveraccent] (2.4,19.35) rectangle (3.15,19.43);
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\fontsize{14}{20}\selectfont]
+  at (2.4,18.25) {训练一个可靠的AI};
+\node[anchor=base west,inner sep=0,text=covermuted,
+  font=\fontsize{9}{14}\selectfont]
+  at (2.4,17.2) {从数据与训练，到推理、工具与可解释性};
+
+% Angular branching trajectories: six generations of exploration.
+% Branches remain disjoint; rejected trajectories fade at staggered endpoints.
+\begin{scope}[line cap=butt,line join=miter]
+\draw[covermuted,line width=0.55pt] (2.400,10.500) -- (2.900,10.500);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.237,6.455) -- (13.496,6.455) -- (14.359,6.398) -- (14.675,6.398);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.237,6.455) -- (13.484,6.455) -- (14.309,6.503) -- (14.611,6.503);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.085,6.565) -- (11.473,6.565) -- (12.764,6.455) -- (13.237,6.455);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.996,6.670) -- (13.356,6.670) -- (14.554,6.609) -- (14.994,6.609);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.996,6.670) -- (13.307,6.670) -- (14.345,6.720) -- (14.726,6.720);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.085,6.565) -- (11.429,6.565) -- (12.576,6.670) -- (12.996,6.670);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.086,6.789) -- (9.446,6.789) -- (10.645,6.565) -- (11.085,6.565);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.262,6.882) -- (13.552,6.882) -- (14.521,6.831) -- (14.876,6.831);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.262,6.882) -- (13.550,6.882) -- (14.512,6.933) -- (14.865,6.933);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.396,7.004) -- (11.731,7.004) -- (12.851,6.882) -- (13.262,6.882);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.008,7.106) -- (13.344,7.106) -- (14.462,7.041) -- (14.872,7.041);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.008,7.106) -- (13.304,7.106) -- (14.291,7.163) -- (14.653,7.163);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.396,7.004) -- (11.686,7.004) -- (12.653,7.106) -- (13.008,7.106);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.086,6.789) -- (9.501,6.789) -- (10.887,7.004) -- (11.396,7.004);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (6.771,7.313) -- (7.188,7.313) -- (8.576,6.789) -- (9.086,6.789);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.108,7.360) -- (13.397,7.360) -- (14.359,7.300) -- (14.712,7.300);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.108,7.360) -- (13.386,7.360) -- (14.310,7.432) -- (14.650,7.432);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.253,7.507) -- (11.587,7.507) -- (12.700,7.360) -- (13.108,7.360);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.067,7.639) -- (13.369,7.639) -- (14.378,7.559) -- (14.747,7.559);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.067,7.639) -- (13.345,7.639) -- (14.273,7.707) -- (14.613,7.707);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.253,7.507) -- (11.580,7.507) -- (12.668,7.639) -- (13.067,7.639);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (8.905,7.752) -- (9.328,7.752) -- (10.737,7.507) -- (11.253,7.507);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.049,7.918) -- (13.347,7.918) -- (14.339,7.850) -- (14.703,7.850);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.049,7.918) -- (13.397,7.918) -- (14.556,7.982) -- (14.982,7.982);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.305,8.031) -- (11.619,8.031) -- (12.666,7.918) -- (13.049,7.918);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.251,8.163) -- (13.506,8.163) -- (14.358,8.108) -- (14.670,8.108);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.251,8.163) -- (13.506,8.163) -- (14.357,8.222) -- (14.669,8.222);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.305,8.031) -- (11.656,8.031) -- (12.823,8.163) -- (13.251,8.163);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (8.905,7.752) -- (9.337,7.752) -- (10.777,8.031) -- (11.305,8.031);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (6.771,7.313) -- (7.155,7.313) -- (8.436,7.752) -- (8.905,7.752);
+\draw[covermuted!86!coverpaper,line width=0.45pt] (4.652,8.232) -- (5.034,8.232) -- (6.305,7.313) -- (6.771,7.313);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.265,8.373) -- (13.554,8.373) -- (14.517,8.323) -- (14.870,8.323);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.265,8.373) -- (13.560,8.373) -- (14.544,8.419) -- (14.905,8.419);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.012,8.485) -- (11.418,8.485) -- (12.770,8.373) -- (13.265,8.373);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.059,8.582) -- (13.399,8.582) -- (14.529,8.526) -- (14.944,8.526);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.059,8.582) -- (13.389,8.582) -- (14.488,8.638) -- (14.891,8.638);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.012,8.485) -- (11.381,8.485) -- (12.609,8.582) -- (13.059,8.582);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.175,8.702) -- (9.506,8.702) -- (10.608,8.485) -- (11.012,8.485);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.079,8.803) -- (13.401,8.803) -- (14.475,8.747) -- (14.868,8.747);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.079,8.803) -- (13.371,8.803) -- (14.341,8.857) -- (14.697,8.857);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.208,8.910) -- (11.545,8.910) -- (12.668,8.803) -- (13.079,8.803);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.246,9.020) -- (13.507,9.020) -- (14.374,8.963) -- (14.693,8.963);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.246,9.020) -- (13.559,9.020) -- (14.603,9.071) -- (14.985,9.071);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.208,8.910) -- (11.575,8.910) -- (12.798,9.020) -- (13.246,9.020);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.175,8.702) -- (9.541,8.702) -- (10.761,8.910) -- (11.208,8.910);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (7.007,9.195) -- (7.397,9.195) -- (8.698,8.702) -- (9.175,8.702);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.232,9.246) -- (13.514,9.246) -- (14.456,9.189) -- (14.802,9.189);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.232,9.246) -- (13.478,9.246) -- (14.300,9.308) -- (14.601,9.308);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.221,9.368) -- (11.583,9.368) -- (12.789,9.246) -- (13.232,9.246);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.294,9.487) -- (13.555,9.487) -- (14.425,9.424) -- (14.744,9.424);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.294,9.487) -- (13.545,9.487) -- (14.381,9.547) -- (14.688,9.547);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.221,9.368) -- (11.594,9.368) -- (12.838,9.487) -- (13.294,9.487);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (8.906,9.621) -- (9.323,9.621) -- (10.712,9.368) -- (11.221,9.368);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.953,9.724) -- (13.270,9.724) -- (14.330,9.669) -- (14.719,9.669);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.953,9.724) -- (13.286,9.724) -- (14.397,9.783) -- (14.804,9.783);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.079,9.862) -- (11.416,9.862) -- (12.540,9.724) -- (12.953,9.724);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.161,9.976) -- (13.475,9.976) -- (14.521,9.900) -- (14.904,9.900);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.161,9.976) -- (13.434,9.976) -- (14.344,10.038) -- (14.678,10.038);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.079,9.862) -- (11.453,9.862) -- (12.703,9.976) -- (13.161,9.976);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (8.906,9.621) -- (9.297,9.621) -- (10.601,9.862) -- (11.079,9.862);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (7.007,9.195) -- (7.349,9.195) -- (8.488,9.621) -- (8.906,9.621);
+\draw[covermuted!86!coverpaper,line width=0.45pt] (4.652,8.232) -- (5.076,8.232) -- (6.489,9.195) -- (7.007,9.195);
+\draw[covermuted!92!coverpaper,line width=0.45pt] (2.900,10.500) -- (3.215,10.500) -- (4.267,8.232) -- (4.652,8.232);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.060,10.285) -- (13.388,10.285) -- (14.479,10.198) -- (14.879,10.198);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.060,10.285) -- (13.361,10.285) -- (14.364,10.369) -- (14.732,10.369);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.391,10.439) -- (11.692,10.439) -- (12.693,10.285) -- (13.060,10.285);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.216,10.610) -- (13.506,10.610) -- (14.475,10.530) -- (14.830,10.530);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.216,10.610) -- (13.502,10.610) -- (14.458,10.684) -- (14.808,10.684);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.391,10.439) -- (11.720,10.439) -- (12.814,10.610) -- (13.216,10.610);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.102,10.707) -- (9.514,10.707) -- (10.888,10.439) -- (11.391,10.439);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.256,10.909) -- (13.544,10.909) -- (14.505,10.842) -- (14.858,10.842);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.256,10.909) -- (13.527,10.909) -- (14.428,10.987) -- (14.759,10.987);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.210,11.032) -- (11.578,11.032) -- (12.806,10.909) -- (13.256,10.909);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.057,11.177) -- (13.396,11.177) -- (14.526,11.115) -- (14.940,11.115);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.057,11.177) -- (13.388,11.177) -- (14.490,11.238) -- (14.894,11.238);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.210,11.032) -- (11.543,11.032) -- (12.651,11.177) -- (13.057,11.177);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.102,10.707) -- (9.482,10.707) -- (10.746,11.032) -- (11.210,11.032);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (6.880,11.354) -- (7.280,11.354) -- (8.614,10.707) -- (9.102,10.707);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.231,11.445) -- (13.479,11.445) -- (14.306,11.375) -- (14.609,11.375);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.231,11.445) -- (13.531,11.445) -- (14.533,11.519) -- (14.900,11.519);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.025,11.604) -- (11.422,11.604) -- (12.746,11.445) -- (13.231,11.445);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.147,11.748) -- (13.410,11.748) -- (14.290,11.668) -- (14.612,11.668);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.147,11.748) -- (13.409,11.748) -- (14.285,11.827) -- (14.607,11.827);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.025,11.604) -- (11.407,11.604) -- (12.680,11.748) -- (13.147,11.748);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (8.936,11.947) -- (9.312,11.947) -- (10.565,11.604) -- (11.025,11.604);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.064,12.094) -- (13.399,12.094) -- (14.516,11.991) -- (14.925,11.991);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.064,12.094) -- (13.375,12.094) -- (14.413,12.178) -- (14.793,12.178);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.028,12.250) -- (11.395,12.250) -- (12.616,12.094) -- (13.064,12.094);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.037,12.437) -- (13.333,12.437) -- (14.321,12.357) -- (14.683,12.357);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.037,12.437) -- (13.321,12.437) -- (14.267,12.513) -- (14.614,12.513);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.028,12.250) -- (11.390,12.250) -- (12.595,12.437) -- (13.037,12.437);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (8.936,11.947) -- (9.313,11.947) -- (10.568,12.250) -- (11.028,12.250);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (6.880,11.354) -- (7.251,11.354) -- (8.484,11.947) -- (8.936,11.947);
+\draw[covermuted!86!coverpaper,line width=0.45pt] (4.922,12.382) -- (5.274,12.382) -- (6.450,11.354) -- (6.880,11.354);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.299,12.720) -- (13.560,12.720) -- (14.430,12.651) -- (14.749,12.651);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.299,12.720) -- (13.538,12.720) -- (14.333,12.777) -- (14.625,12.777);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.348,12.879) -- (11.699,12.879) -- (12.870,12.720) -- (13.299,12.720);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.981,13.006) -- (13.290,13.006) -- (14.324,12.920) -- (14.702,12.920);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.981,13.006) -- (13.305,13.006) -- (14.385,13.079) -- (14.781,13.079);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.348,12.879) -- (11.641,12.879) -- (12.621,13.006) -- (12.981,13.006);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.040,13.155) -- (9.456,13.155) -- (10.840,12.879) -- (11.348,12.879);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.196,13.303) -- (13.464,13.303) -- (14.360,13.241) -- (14.689,13.241);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.196,13.303) -- (13.474,13.303) -- (14.403,13.379) -- (14.744,13.379);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.255,13.441) -- (11.604,13.441) -- (12.769,13.303) -- (13.196,13.303);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.134,13.578) -- (13.401,13.578) -- (14.289,13.504) -- (14.615,13.504);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.134,13.578) -- (13.458,13.578) -- (14.537,13.642) -- (14.932,13.642);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.255,13.441) -- (11.593,13.441) -- (12.720,13.578) -- (13.134,13.578);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.040,13.155) -- (9.439,13.155) -- (10.767,13.441) -- (11.255,13.441);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (7.015,13.622) -- (7.380,13.622) -- (8.595,13.155) -- (9.040,13.155);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.049,13.823) -- (13.359,13.823) -- (14.392,13.765) -- (14.771,13.765);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.049,13.823) -- (13.351,13.823) -- (14.358,13.872) -- (14.727,13.872);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.259,13.943) -- (11.581,13.943) -- (12.655,13.823) -- (13.049,13.823);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.120,14.050) -- (13.443,14.050) -- (14.519,13.995) -- (14.914,13.995);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.120,14.050) -- (13.434,14.050) -- (14.480,14.115) -- (14.864,14.115);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.259,13.943) -- (11.594,13.943) -- (12.711,14.050) -- (13.120,14.050);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.104,14.183) -- (9.492,14.183) -- (10.785,13.943) -- (11.259,13.943);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.966,14.300) -- (13.272,14.300) -- (14.291,14.241) -- (14.664,14.241);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (12.966,14.300) -- (13.324,14.300) -- (14.515,14.372) -- (14.952,14.372);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.234,14.409) -- (11.546,14.409) -- (12.585,14.300) -- (12.966,14.300);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.098,14.540) -- (13.438,14.540) -- (14.574,14.488) -- (14.991,14.488);
+\draw[covermuted!50!coverpaper,line width=0.45pt] (13.098,14.540) -- (13.371,14.540) -- (14.280,14.598) -- (14.614,14.598);
+\draw[covermuted!59!coverpaper,line width=0.45pt] (11.234,14.409) -- (11.570,14.409) -- (12.688,14.540) -- (13.098,14.540);
+\draw[covermuted!67!coverpaper,line width=0.45pt] (9.104,14.183) -- (9.487,14.183) -- (10.766,14.409) -- (11.234,14.409);
+\draw[covermuted!78!coverpaper,line width=0.45pt] (7.015,13.622) -- (7.391,13.622) -- (8.645,14.183) -- (9.104,14.183);
+\draw[covermuted!86!coverpaper,line width=0.45pt] (4.922,12.382) -- (5.299,12.382) -- (6.555,13.622) -- (7.015,13.622);
+\draw[covermuted!92!coverpaper,line width=0.45pt] (2.900,10.500) -- (3.264,10.500) -- (4.477,12.382) -- (4.922,12.382);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.675,6.398) -- (15.294,6.398);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.294,6.398) -- (15.747,6.398);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.747,6.398) -- (16.050,6.398);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.611,6.503) -- (15.067,6.503);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.067,6.503) -- (15.402,6.503);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.402,6.503) -- (15.624,6.503);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.994,6.609) -- (15.462,6.609);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.462,6.609) -- (15.805,6.609);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.805,6.609) -- (16.034,6.609);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.726,6.720) -- (15.256,6.720);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.256,6.720) -- (15.644,6.720);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.644,6.720) -- (15.903,6.720);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.876,6.831) -- (15.743,6.831);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.743,6.831) -- (16.378,6.831);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.378,6.831) -- (16.802,6.831);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.865,6.933) -- (15.912,6.933);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.912,6.933) -- (16.680,6.933);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.680,6.933) -- (17.192,6.933);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.872,7.041) -- (15.343,7.041);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.343,7.041) -- (15.689,7.041);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.689,7.041) -- (15.919,7.041);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.653,7.163) -- (15.371,7.163);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.371,7.163) -- (15.898,7.163);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.898,7.163) -- (16.249,7.163);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.712,7.300) -- (15.115,7.300);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.115,7.300) -- (15.411,7.300);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.411,7.300) -- (15.608,7.300);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.650,7.432) -- (15.046,7.432);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.046,7.432) -- (15.337,7.432);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.337,7.432) -- (15.531,7.432);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.747,7.559) -- (15.179,7.559);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.179,7.559) -- (15.495,7.559);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.495,7.559) -- (15.706,7.559);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.613,7.707) -- (15.007,7.707);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.007,7.707) -- (15.297,7.707);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.297,7.707) -- (15.489,7.707);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.703,7.850) -- (15.827,7.850);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.827,7.850) -- (16.651,7.850);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.651,7.850) -- (17.201,7.850);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.982,7.982) -- (15.438,7.982);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.438,7.982) -- (15.773,7.982);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.773,7.982) -- (15.996,7.982);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.670,8.108) -- (15.653,8.108);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.653,8.108) -- (16.375,8.108);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.375,8.108) -- (16.855,8.108);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.669,8.222) -- (15.734,8.222);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.734,8.222) -- (16.515,8.222);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.515,8.222) -- (17.036,8.222);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.870,8.323) -- (15.325,8.323);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.325,8.323) -- (15.658,8.323);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.658,8.323) -- (15.880,8.323);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.905,8.419) -- (15.556,8.419);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.556,8.419) -- (16.034,8.419);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.034,8.419) -- (16.352,8.419);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.944,8.526) -- (15.749,8.526);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.749,8.526) -- (16.339,8.526);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.339,8.526) -- (16.732,8.526);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.891,8.638) -- (15.547,8.638);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.547,8.638) -- (16.027,8.638);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.027,8.638) -- (16.348,8.638);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.868,8.747) -- (15.700,8.747);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.700,8.747) -- (16.310,8.747);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.310,8.747) -- (16.717,8.747);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.697,8.857) -- (15.067,8.857);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.067,8.857) -- (15.338,8.857);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.338,8.857) -- (15.519,8.857);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.693,8.963) -- (15.840,8.963);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.840,8.963) -- (16.681,8.963);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.681,8.963) -- (17.242,8.963);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.985,9.071) -- (16.132,9.071);
+\draw[coverline!28!coverpaper,line width=0.4pt] (16.132,9.071) -- (16.973,9.071);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.973,9.071) -- (17.533,9.071);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.802,9.189) -- (16.004,9.189);
+\draw[coverline!28!coverpaper,line width=0.4pt] (16.004,9.189) -- (16.886,9.189);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.886,9.189) -- (17.474,9.189);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.601,9.308) -- (15.726,9.308);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.726,9.308) -- (16.551,9.308);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.551,9.308) -- (17.101,9.308);
+\draw[covermuted,line width=0.75pt] (14.744,9.424) -- (18.600,9.424);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.688,9.547) -- (15.574,9.547);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.574,9.547) -- (16.223,9.547);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.223,9.547) -- (16.657,9.547);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.719,9.669) -- (15.217,9.669);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.217,9.669) -- (15.583,9.669);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.583,9.669) -- (15.827,9.669);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.804,9.783) -- (15.155,9.783);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.155,9.783) -- (15.412,9.783);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.412,9.783) -- (15.583,9.783);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.904,9.900) -- (15.539,9.900);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.539,9.900) -- (16.004,9.900);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.004,9.900) -- (16.315,9.900);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.678,10.038) -- (15.176,10.038);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.176,10.038) -- (15.541,10.038);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.541,10.038) -- (15.785,10.038);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.879,10.198) -- (15.700,10.198);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.700,10.198) -- (16.301,10.198);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.301,10.198) -- (16.703,10.198);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.732,10.369) -- (15.933,10.369);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.933,10.369) -- (16.815,10.369);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.815,10.369) -- (17.402,10.369);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.830,10.530) -- (15.333,10.530);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.333,10.530) -- (15.702,10.530);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.702,10.530) -- (15.948,10.530);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.808,10.684) -- (15.632,10.684);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.632,10.684) -- (16.237,10.684);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.237,10.684) -- (16.640,10.684);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.858,10.842) -- (15.301,10.842);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.301,10.842) -- (15.627,10.842);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.627,10.842) -- (15.844,10.842);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.759,10.987) -- (15.982,10.987);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.982,10.987) -- (16.878,10.987);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.878,10.987) -- (17.476,10.987);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.940,11.115) -- (15.769,11.115);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.769,11.115) -- (16.376,11.115);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.376,11.115) -- (16.782,11.115);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.894,11.238) -- (15.692,11.238);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.692,11.238) -- (16.277,11.238);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.277,11.238) -- (16.667,11.238);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.609,11.375) -- (15.450,11.375);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.450,11.375) -- (16.068,11.375);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.068,11.375) -- (16.479,11.375);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.900,11.519) -- (15.335,11.519);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.335,11.519) -- (15.654,11.519);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.654,11.519) -- (15.867,11.519);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.612,11.668) -- (15.876,11.668);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.876,11.668) -- (16.802,11.668);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.802,11.668) -- (17.420,11.668);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.607,11.827) -- (15.421,11.827);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.421,11.827) -- (16.019,11.827);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.019,11.827) -- (16.417,11.827);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.925,11.991) -- (16.066,11.991);
+\draw[coverline!28!coverpaper,line width=0.4pt] (16.066,11.991) -- (16.902,11.991);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.902,11.991) -- (17.460,11.991);
+\draw[coveraccent,line width=0.75pt] (14.793,12.178) -- (18.600,12.178);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.683,12.357) -- (15.749,12.357);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.749,12.357) -- (16.530,12.357);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.530,12.357) -- (17.052,12.357);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.614,12.513) -- (15.828,12.513);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.828,12.513) -- (16.717,12.513);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.717,12.513) -- (17.311,12.513);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.749,12.651) -- (15.339,12.651);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.339,12.651) -- (15.772,12.651);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.772,12.651) -- (16.061,12.651);
+\draw[coveraccent,line width=0.75pt] (14.625,12.777) -- (18.600,12.777);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.702,12.920) -- (15.631,12.920);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.631,12.920) -- (16.312,12.920);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.312,12.920) -- (16.766,12.920);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.781,13.079) -- (15.633,13.079);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.633,13.079) -- (16.258,13.079);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.258,13.079) -- (16.674,13.079);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.689,13.241) -- (15.055,13.241);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.055,13.241) -- (15.324,13.241);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.324,13.241) -- (15.503,13.241);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.744,13.379) -- (15.862,13.379);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.862,13.379) -- (16.683,13.379);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.683,13.379) -- (17.229,13.379);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.615,13.504) -- (15.239,13.504);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.239,13.504) -- (15.696,13.504);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.696,13.504) -- (16.001,13.504);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.932,13.642) -- (15.536,13.642);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.536,13.642) -- (15.979,13.642);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.979,13.642) -- (16.274,13.642);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.771,13.765) -- (15.042,13.765);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.042,13.765) -- (15.241,13.765);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.241,13.765) -- (15.373,13.765);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.727,13.872) -- (15.386,13.872);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.386,13.872) -- (15.870,13.872);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.870,13.872) -- (16.192,13.872);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.914,13.995) -- (15.210,13.995);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.210,13.995) -- (15.428,13.995);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.428,13.995) -- (15.573,13.995);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.864,14.115) -- (15.357,14.115);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.357,14.115) -- (15.719,14.115);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.719,14.115) -- (15.961,14.115);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.664,14.241) -- (15.792,14.241);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.792,14.241) -- (16.619,14.241);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.619,14.241) -- (17.171,14.241);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.952,14.372) -- (15.316,14.372);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.316,14.372) -- (15.584,14.372);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.584,14.372) -- (15.762,14.372);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.991,14.488) -- (15.874,14.488);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.874,14.488) -- (16.521,14.488);
+\draw[coverline!13!coverpaper,line width=0.4pt] (16.521,14.488) -- (16.953,14.488);
+\draw[coverline!45!coverpaper,line width=0.4pt] (14.614,14.598) -- (15.247,14.598);
+\draw[coverline!28!coverpaper,line width=0.4pt] (15.247,14.598) -- (15.710,14.598);
+\draw[coverline!13!coverpaper,line width=0.4pt] (15.710,14.598) -- (16.020,14.598);
+\draw[coveraccent,line width=0.75pt] (8.936,11.947) -- (9.313,11.947) -- (10.568,12.250) -- (11.028,12.250);
+\draw[coveraccent,line width=0.75pt] (11.028,12.250) -- (11.395,12.250) -- (12.616,12.094) -- (13.064,12.094);
+\draw[coveraccent,line width=0.75pt] (13.064,12.094) -- (13.375,12.094) -- (14.413,12.178) -- (14.793,12.178);
+\fill[coveraccent] (10.985,12.207) rectangle (11.071,12.293);
+\draw[covermuted,line width=0.75pt] (8.906,9.621) -- (9.323,9.621) -- (10.712,9.368) -- (11.221,9.368);
+\draw[covermuted,line width=0.75pt] (11.221,9.368) -- (11.594,9.368) -- (12.838,9.487) -- (13.294,9.487);
+\draw[covermuted,line width=0.75pt] (13.294,9.487) -- (13.555,9.487) -- (14.425,9.424) -- (14.744,9.424);
+\fill[covermuted] (11.178,9.325) rectangle (11.264,9.411);
+\draw[coveraccent,line width=0.75pt] (9.040,13.155) -- (9.456,13.155) -- (10.840,12.879) -- (11.348,12.879);
+\draw[coveraccent,line width=0.75pt] (11.348,12.879) -- (11.699,12.879) -- (12.870,12.720) -- (13.299,12.720);
+\draw[coveraccent,line width=0.75pt] (13.299,12.720) -- (13.538,12.720) -- (14.333,12.777) -- (14.625,12.777);
+\fill[coveraccent] (11.305,12.836) rectangle (11.391,12.922);
+\node[anchor=south west,inner sep=0,text=coveraccent,font=\sffamily\fontsize{6}{8}\selectfont] at (17.65,12.263) {+};
+\node[anchor=south west,inner sep=0,text=coveraccent,font=\sffamily\fontsize{6}{8}\selectfont] at (17.65,12.862) {+};
+\end{scope}
+
+% Quiet colophon: the author, affiliation and edition date are the only footer.
+\node[anchor=base west,inner sep=0,text=coverink,
+  font=\sffamily\fontsize{12}{18}\selectfont]
+  at (2.4,3.65) {李孙博闻};
+\node[anchor=base west,inner sep=0,text=covermuted,
+  font=\fontsize{9}{14}\selectfont]
+  at (2.4,2.85) {北京理工大学};
+\node[anchor=base east,inner sep=0,text=covermuted,
+  font=\sffamily\fontsize{9}{13}\selectfont]
+  at (18.6,2.85) {2026.10};
+\end{scope}
+\end{tikzpicture}
+\mbox{}
+\end{titlepage}

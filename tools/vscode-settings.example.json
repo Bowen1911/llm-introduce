@@ -1,0 +1,30 @@
+{
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.search.rootFiles.include": ["main.tex"],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-xelatex",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-xelatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {
+        "LANG": "C",
+        "LC_ALL": "C",
+        "LC_CTYPE": "C"
+      }
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (XeLaTeX)",
+      "tools": ["latexmk-xelatex"]
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab"
+}

@@ -37,6 +37,7 @@ venv/
 # Editor, OS, and temporary files
 .idea/
 .vscode/
+*.code-workspace
 .DS_Store
 Thumbs.db
 Desktop.ini

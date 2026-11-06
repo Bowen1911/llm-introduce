@@ -6,4 +6,24 @@
 \setlength{\emergencystretch}{3em}
 \setlength{\parskip}{0.35em}
 \ctexset{chapter={format=\huge\bfseries},section={format=\Large\bfseries}}
+% Native parts provide both contents/bookmark hierarchy and opening pages.
+\newcommand{\bookpart}[3]{%
+  \begingroup
+  \ctexset{part={
+    name={第,部分},
+    beforeskip=0.20\textheight,
+    aftertitle={%
+      \par\vspace{1.2em}%
+      {\large\normalfont #2\par}%
+      \vspace{1.5em}%
+      \begin{minipage}{0.76\textwidth}
+        \normalfont\normalsize
+        \setlength{\parindent}{2em}%
+        #3\par
+      \end{minipage}\par
+    }
+  }}%
+  \part{#1}%
+  \endgroup
+}
 \AtBeginEnvironment{longtable}{\small}
